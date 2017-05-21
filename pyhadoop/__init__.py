@@ -1,7 +1,7 @@
 import argparse
 import sys
 import os
-from resources import command_map
+from .resources import command_map
 
 __author__ = 'hikmat'
 
@@ -31,7 +31,7 @@ def main():
     cmd = args.command    
     cmd_exec=''
 
-    if cmd in command_map.keys():
+    if cmd in list(command_map.keys()):
        cmd_exec = command_map[cmd]
     else:
        print("Oops!!! Unknown command!!!")      
@@ -46,7 +46,7 @@ def main():
 
     cmd_exec = cmd_exec.replace("$HADOOP_HOME",HADOOP_HOME)
     
-    print("Executing {} .........".format(cmd_exec))
+    print(("Executing {} .........".format(cmd_exec)))
 
     os.system(cmd_exec)
     	
